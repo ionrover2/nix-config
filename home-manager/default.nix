@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixvim, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -7,11 +7,13 @@
   home.homeDirectory = "/home/thall";
 
   imports = [
-  ./jujutsu.nix
-  ./git.nix
-
+    nixvim.homeModules.nixvim
+    ./jujutsu.nix
+    ./git.nix
+    ./programs.nix
   ];
-programs.home-manager.enable = true;
+  programs.nixvim.enable = true;
+  programs.home-manager.enable = true;
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -30,7 +32,6 @@ programs.home-manager.enable = true;
     powershell
     tree
     nixfmt-rfc-style
-    
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -50,8 +51,8 @@ programs.home-manager.enable = true;
     # '')
   ];
   home.sessionVariables = {
-    EDITOR = "vim";
-    VISUAL = "vim";
+    # EDITOR = "vim";
+    # VISUAL = "vim";
   };
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -67,7 +68,5 @@ programs.home-manager.enable = true;
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
-
-
 
 }
