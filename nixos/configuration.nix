@@ -104,7 +104,6 @@
   virtualisation.docker.enable = true;
   # Install firefox.
   programs.firefox.enable = true;
-
   programs.hyprland.enable = true;
 
   # Allow unfree packages
@@ -114,16 +113,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # vlc
-    # nil
-    # nixfmt-rfc-style
-    # go
-    # vim
-    # kitty
-    # vscode
-    # tree
-    # jujutsu
-    # git
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

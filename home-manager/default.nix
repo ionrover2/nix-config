@@ -1,17 +1,20 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "thall";
   home.homeDirectory = "/home/thall";
+  
 
   imports = [
-  ./jujutsu.nix
-  ./git.nix
-
+    ./jujutsu.nix
+    ./git.nix
+    ./shell.nix
+    ./texteditors.nix
+    ./programs.nix
+    inputs.nixvim.homeModules.nixvim
   ];
-programs.home-manager.enable = true;
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -30,7 +33,6 @@ programs.home-manager.enable = true;
     powershell
     tree
     nixfmt-rfc-style
-    
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -67,7 +69,5 @@ programs.home-manager.enable = true;
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
-
-
 
 }

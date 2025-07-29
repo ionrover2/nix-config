@@ -1,12 +1,13 @@
-{config,pkgs,...}:
+{ config, pkgs, ... }:
 {
   programs.jujutsu = {
-      enable = true;
-      settings = {
-        user = {
-          name = "Tucker Hall";
-          email = "tucker@tuckerhall.me";
-        };
+    enable = true;
+    # settings map to config.toml
+    settings = {
+      user = {
+        name = "Tucker Hall";
+        email = "tucker@tuckerhall.me";
       };
     };
+  };
 }
