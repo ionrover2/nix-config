@@ -1,20 +1,15 @@
-{ config, pkgs, ... }:
+{ config, pkgs,nixvim, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "thall";
   home.homeDirectory = "/home/thall";
-  
 
   imports = [
+    nixvim.homeModules.nixvim
     ./shell.nix
     ./texteditors.nix
-    inputs.nixvim.homeModules.nixvim
-  ./jujutsu.nix
-  ./git.nix
-
-    nixvim.homeModules.nixvim
     ./jujutsu.nix
     ./git.nix
     ./programs.nix
