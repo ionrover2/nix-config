@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -8,12 +8,16 @@
   
 
   imports = [
-    ./jujutsu.nix
-    ./git.nix
     ./shell.nix
     ./texteditors.nix
-    ./programs.nix
     inputs.nixvim.homeModules.nixvim
+  ./jujutsu.nix
+  ./git.nix
+
+    nixvim.homeModules.nixvim
+    ./jujutsu.nix
+    ./git.nix
+    ./programs.nix
   ];
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -52,8 +56,8 @@
     # '')
   ];
   home.sessionVariables = {
-    EDITOR = "vim";
-    VISUAL = "vim";
+    # EDITOR = "vim";
+    # VISUAL = "vim";
   };
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

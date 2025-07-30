@@ -30,6 +30,7 @@
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
+          inherit system;
           modules = [
             ./nixos
             home-manager.nixosModules.home-manager
@@ -37,17 +38,25 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.thall = ./home-manager;
+
+              # Optionally, use home-manager.extraSpecialArgs to pass
+              # arguments to home.nix
+              home-manager.extraSpecialArgs = { inherit nixvim; };
             }
             nixvim.homeModules.nixvim
           ];
         };
-      };
       # Standalone home manager configurations.
       homeConfigurations = {
         "thall" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ ./home-manager ];
-        };
+      };
+      # Standalone home manager configurations.
+      homeConfigurations."thall" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ./home-manager ];
+          extraSpecialArgs = { inherit nixvim; };
       };
     };
 }
